@@ -7,8 +7,8 @@ string型, int型, bool型, double型, decimal型のデータをサポートし�
 | API | 説明 |
 | ---- | ---- |
 | IniFile( INIファイルのパス ) | コンストラクタ |
-| Exists() | INIファイルが存在するか否かを返す |
-| Create() | INIファイルを新規作成する |
+| Exists() | INIファイルが存在するか否かを返す ※|
+| Create() | INIファイルを作成する ※|
 | ReadInteger( セクション名, キー名, デフォルト値) | int型のデータを取得する |
 | ReadString( セクション名, キー名, デフォルト値) | string型のデータを取得する |
 | ReadBoolean( セクション名, キー名, デフォルト値) | bool型のデータを取得する |
@@ -19,3 +19,5 @@ string型, int型, bool型, double型, decimal型のデータをサポートし�
 | WriteBoolean( セクション名, キー名, 値) | bool型のデータを設定する |
 | WriteDouble( セクション名, キー名, 値) | double型のデータを設定する |
 | WriteDecimal( セクション名, キー名, 値) | decimal型のデータを設定する |
+
+※ ディレクトリが既存であればファイルは存在しなくても自動作成されるので、これらのメソッドで存在確認 / 作成するのは必須ではない。
