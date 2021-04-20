@@ -116,11 +116,26 @@ namespace IniFileSharp
         // get double data
         public double ReadDouble(string section, string key, double defaultValue)
         {
-            StringBuilder sb = new StringBuilder(64);
+            StringBuilder sb = new StringBuilder(32);
             GetPrivateProfileString(section, key, "", sb, Convert.ToUInt32(sb.Capacity), FileName);
             try
             {
-                return System.Convert.ToDouble(sb.ToString());
+                return Convert.ToDouble(sb.ToString());
+            }
+            catch
+            {
+                return defaultValue;
+            }
+        }
+
+        // get decimal data
+        public decimal ReadDecimal(string section, string key, decimal defaultValue)
+        {
+            StringBuilder sb = new StringBuilder(32);
+            GetPrivateProfileString(section, key, "", sb, Convert.ToUInt32(sb.Capacity), FileName);
+            try
+            {
+                return Convert.ToDecimal(sb.ToString());
             }
             catch
             {
@@ -148,6 +163,12 @@ namespace IniFileSharp
 
         // set double value
         public void WriteDouble(string section, string key, double value)
+        {
+            WritePrivateProfileString(section, key, value.ToString(), FileName);
+        }
+
+        // set decimal value
+        public void WriteDecimal(string section, string key, decimal value)
         {
             WritePrivateProfileString(section, key, value.ToString(), FileName);
         }
