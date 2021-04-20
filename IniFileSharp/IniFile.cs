@@ -48,6 +48,14 @@ namespace IniFileSharp
         // constructor
         public IniFile(string filename = @".\SETTING.INI")
         {
+            // if no directory specified, 
+            // the above WIN32APIs searches the Windows directory for the file,
+            // NOT the current directory.
+            string dir = Path.GetDirectoryName(filename);
+            if (dir == "")
+            {
+                filename = @".\" + filename;
+            }
             FileName = filename;
         }
 

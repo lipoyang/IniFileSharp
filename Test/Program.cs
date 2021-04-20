@@ -9,12 +9,12 @@ namespace TestIniFile
         {
             Console.WriteLine("Test IniFile");
 
-            IniFile iniFile = new IniFile(@"HOGE\TEST.INI");
+            IniFile iniFile = new IniFile(@"TEST.INI");
             if (!iniFile.Exists())
             {
                 Console.WriteLine("TEST.INI not found.");
                 Console.WriteLine("create TEST.INI...");
-                //iniFile.Create();
+                iniFile.Create();
             }
 
             // write integer
